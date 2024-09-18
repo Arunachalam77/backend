@@ -1,5 +1,5 @@
 import express from "express";
-import itemsController from "../controller.js"; // Make sure to include the .js extension
+import itemsController from "../controller.js"; 
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.post("/items", itemsController.createItem);
 router.put("/items/:id", itemsController.updateItem);
 router.delete("/items/:id", itemsController.deleteItem);
 
-export default router; // Use export default instead of module.exports
+export default router; 
