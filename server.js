@@ -1,19 +1,13 @@
 const express = require("express");
 const app = express();
-const PORT = 6000;
+const PORT = process.env.PORT || 5000;
 
-// Import the items controller.js
-const itemsController = require("./controller");
+// Import the routes
+const routes = require("./routes");
 
 app.use(express.json());
-
-// Routes
-app.get("/items", itemsController.getAllItems);
-app.get("/items/:id", itemsController.getItemById);
-app.post("/items", itemsController.createItem);
-app.put("/items/:id", itemsController.updateItem);
-app.delete("/items/:id", itemsController.deleteItem);
+app.use("/", routes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running  port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
