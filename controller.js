@@ -1,6 +1,5 @@
-const { items } = require("./utils/constants");
-
-exports.getAllItems = (req, res) => {
+import { items } from "./utils/constants.js";
+const getAllItems = (req, res) => {
   res?.send({
     success: true,
     message: "Data Fetched Successfully!",
@@ -8,7 +7,7 @@ exports.getAllItems = (req, res) => {
   });
 };
 
-exports.getItemById = (req, res) => {
+const getItemById = (req, res) => {
   const { id } = req?.params;
   const item = items?.find((i) => i?.id === parseInt(id));
   if (!item) {
@@ -24,7 +23,7 @@ exports.getItemById = (req, res) => {
   });
 };
 
-exports.createItem = (req, res) => {
+const createItem = (req, res) => {
   const { name, team, position, goals, assists, tackles, clean_sheets } = req?.body;
 
   if (!name || !team || !position) {
@@ -57,7 +56,7 @@ exports.createItem = (req, res) => {
   });
 };
 
-exports.updateItem = (req, res) => {
+const updateItem = (req, res) => {
   const { id } = req?.params;
   const { name, position, team, goals, assists, tackles, clean_sheets } = req?.body;
   const item = items?.find((i) => i?.id === parseInt(id));
@@ -97,7 +96,7 @@ exports.updateItem = (req, res) => {
   });
 };
 
-exports.deleteItem = (req, res) => {
+const deleteItem = (req, res) => {
   const { id } = req?.params;
   const itemIndex = items?.findIndex((i) => i?.id === parseInt(id));
 
@@ -114,4 +113,13 @@ exports.deleteItem = (req, res) => {
     success: true,
     message: "Data Deleted Successfully!",
   });
+};
+
+
+export default {
+  getAllItems,
+  getItemById,
+  createItem,
+  updateItem,
+  deleteItem,
 };
